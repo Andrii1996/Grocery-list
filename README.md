@@ -1,3 +1,15 @@
-# Getting Started with Create React App
+Test task: Grocery List
 
-This project was bootstrapped with [Demo](https://github.com/facebook/create-react-app).
+[Demo](https://andrii1996.github.io/Grocery-list/).
+
+
+  -Dependencies:
+
+    - Node v12.16.3 and higher
+    - NPM v6.14.4 and higher
+  
+  - Installing:
+
+    - Fork and clone this repository
+    - Run npm install in your terminal
+    - Run npm start

@@ -1,7 +1,7 @@
 import React from 'react';
 import './GroceryList.css'
 
-export const GroceryList = ({ groceryList, removeProduct, changeStatus, setFilteredGrocery }) => {
+export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
   const sortedGloceryList = groceryList.sort((a, b) => a.priority - b.priority);
 
   return (
@@ -10,21 +10,18 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus, setFilte
         <button
           type="button"
           className="ui button"
-          // onClick={setFilteredGrocery('all')}
         >
           All
         </button>
         <button
           type="button"
           className="ui button"
-          // onClick={setFilteredGrocery('have')}
         >
           Have
         </button>
         <button
           type="button"
           className="ui button"
-          // onClick={setFilteredGrocery('ranOut')}
         >
           Ran Out
         </button>
@@ -39,33 +36,35 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus, setFilte
             id="groceryCard"
           >
             <p>
-              <span>
+              <span className="groceryCard__name">
                 {`Name : `}
-                {item.name}
               </span>
+              {item.name}
             </p>
             <p>
-              <span>
+              <span className="groceryCard__name">
               {`Priority : `}
-                {item.priority}
               </span>
+              {item.priority}
             </p>
             <p>
-              <span>
+              <span className="groceryCard__name">
               {`Status : `}
-                {item.status === 'have' ? 'Have' : 'Ran Out'}
               </span>
+              {item.status}
             </p>
-            <div>
-              <span>Status</span>
-              <select
-                className="ui basic floating dropdown button"
-                onChange={event => changeStatus(event.target.value, item.id)}
-              >
-                <option value="">Change Status</option>
-                <option value="ranOut">Ran out</option>
-                <option value="have">Have</option>
-              </select>
+            <div className="groceryCard__button">
+              <div>
+                <span>{`Status `}</span>
+                <select
+                  className="ui basic floating dropdown button"
+                  onChange={event => changeStatus(event.target.value, item.id)}
+                >
+                  <option value="">Change Status</option>
+                  <option value="ranOut">Ran out</option>
+                  <option value="have">Have</option>
+                </select>
+              </div>
               <button
                 type="button"
                 className="ui primary button"

@@ -1,21 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GroceryList } from './components/GroceryList/GroceryList';
 import { AddGrocery } from './components/AddGrocery/Addgrocery';
+import { SetLocalStorage } from './localStorage/setLocalStorage';
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
 
-const list = [
-  {
-    name: 'bread',
-    priority: 3,
-    status: 'have',
-    id: new Date(),
-  },
-];
-
-
 export const App = () => {
-  const [groceryList, setGroceryList] = useState(list)
+  const [groceryList, setGroceryList] = SetLocalStorage('groceryList', [])
 
   const addNewGrocery = (name, priority, status) => {
     const newGrocery = {
@@ -46,10 +37,6 @@ export const App = () => {
     }));
   }
 
-  // const setFilteredGrocery = (status) => {
-  //   setGroceryList(groceryList.filter((item) => item.status === status));
-  // }
-
   return (
     <div className="App">
       <AddGrocery addNewGrocery={addNewGrocery} />
@@ -57,7 +44,6 @@ export const App = () => {
         groceryList={groceryList}
         removeProduct={removeProduct}
         changeStatus={changeStatus}
-        // setFilteredGrocery={setFilteredGrocery}
       />
     </div>
   );
