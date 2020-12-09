@@ -1,8 +1,8 @@
 import React from 'react';
 import './GroceryList.css'
 
-export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
-  const sortedGloceryList = groceryList.sort((a, b) => a.priority - b.priority);
+export const GroceryList = ({ groceryList, removeProduct, changeStatus, filtHave }) => {
+  const sortedGroceryList = groceryList.sort((a, b) => a.priority - b.priority);
 
   return (
     <div>
@@ -22,14 +22,15 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
         <button
           type="button"
           className="ui button"
+          onClick={filtHave('have')}
         >
           Ran Out
         </button>
       </div>
-      {sortedGloceryList.length > 0
+      {sortedGroceryList.length > 0
       ? (
         <ul className="groceryList">
-        {sortedGloceryList.map(item => (
+        {sortedGroceryList.map(item => (
           <li
             key={item.id}
             className="ui card"
