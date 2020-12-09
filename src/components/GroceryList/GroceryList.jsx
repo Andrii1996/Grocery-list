@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './GroceryList.css'
 
-export const GroceryList = ({ groceryList, removeProduct, changeStatus, filtHave }) => {
+export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
   const sortedGroceryList = groceryList.sort((a, b) => a.priority - b.priority);
+  const [ filteredByStatus , setView ] = useState(sortedGroceryList);
+
+  const viewAll = (event) => {
+    console.log(event);
+    setView(groceryList);
+  }
+
+  const filtHave = () => {
+    setView([...groceryList].filter((item) => item.status === 'have'));
+  }
+
+  const filtRanOut = () => {
+    setView([...groceryList].filter((item) => item.status === 'ranOut'));
+  }
+
+  useEffect(() => {
+    setView(groceryList)
+  }, [groceryList]);
 
   return (
     <div>
@@ -10,27 +28,29 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus, filtHave
         <button
           type="button"
           className="ui button"
+          onClick={(event) => viewAll(event)}
         >
           All
         </button>
         <button
           type="button"
           className="ui button"
+          onClick={() => filtHave()}
         >
           Have
         </button>
         <button
           type="button"
           className="ui button"
-          onClick={filtHave('have')}
+          onClick={() => filtRanOut()}
         >
           Ran Out
         </button>
       </div>
-      {sortedGroceryList.length > 0
+      {filteredByStatus.length > 0
       ? (
         <ul className="groceryList">
-        {sortedGroceryList.map(item => (
+        {filteredByStatus.map(item => (
           <li
             key={item.id}
             className="ui card"

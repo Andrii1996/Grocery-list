@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GroceryList } from './components/GroceryList/GroceryList';
 import { AddGrocery } from './components/AddGrocery/Addgrocery';
 import { SetLocalStorage } from './localStorage/setLocalStorage';
@@ -7,7 +7,6 @@ import 'semantic-ui-css/semantic.min.css';
 
 export const App = () => {
   const [groceryList, setGroceryList] = SetLocalStorage('groceryList', [])
-  const [ filteredGroceryList, setFilteredGroceryList ] = useState(groceryList);
 
   const addNewGrocery = (name, priority, status) => {
     const newGrocery = {
@@ -23,12 +22,6 @@ export const App = () => {
   const removeProduct = (id) => {
     setGroceryList(groceryList.filter((item) => item.id !== id));
   }
-
-  const filtHave = (str) => {
-    console.log(str);
-    setFilteredGroceryList(filteredGroceryList.filter((item) => item.status !== str));
-  }
-  
 
   const changeStatus = (status, id) => {
     setGroceryList(groceryList.map((item) => {
@@ -51,7 +44,6 @@ export const App = () => {
         groceryList={groceryList}
         removeProduct={removeProduct}
         changeStatus={changeStatus}
-        filtHave={filtHave}
       />
     </div>
   );
