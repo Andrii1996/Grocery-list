@@ -38,6 +38,7 @@ export const AddGrocery = ({ addNewGrocery }) => {
         <input
           type="text"
           className="ui input"
+          id="input"
           placeholder="Enter product name"
           required
           value={name}
@@ -46,6 +47,7 @@ export const AddGrocery = ({ addNewGrocery }) => {
 
         <select
           className="ui basic floating dropdown button"
+          id="input"
           value={priority}
           onChange={handlePriorityChange}
           required
@@ -60,6 +62,7 @@ export const AddGrocery = ({ addNewGrocery }) => {
 
         <select
           className="ui basic floating dropdown button"
+          id="input"
           value={status}
           onChange={handleStatusChange}
           required

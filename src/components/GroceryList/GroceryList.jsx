@@ -5,8 +5,7 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
   const sortedGroceryList = groceryList.sort((a, b) => a.priority - b.priority);
   const [ filteredByStatus , setView ] = useState(sortedGroceryList);
 
-  const viewAll = (event) => {
-    console.log(event);
+  const viewAll = () => {
     setView(groceryList);
   }
 
@@ -28,7 +27,7 @@ export const GroceryList = ({ groceryList, removeProduct, changeStatus }) => {
         <button
           type="button"
           className="ui button"
-          onClick={(event) => viewAll(event)}
+          onClick={() => viewAll()}
         >
           All
         </button>
